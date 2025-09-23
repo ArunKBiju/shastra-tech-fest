@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHASTRA Tech Fest</title>
+    <meta name="theme-color" content="#00b4d8">
+    <link rel="shortcut icon" href="images/logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('./images/bg-img.jpg') no-repeat center/cover fixed;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .NavBar_logo img {
+            height: 60px;
+            transition: transform 0.3s;
+        }
+
+        .NavBar_logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00b4d8;
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger-menu .line {
+            width: 30px;
+            height: 3px;
+            background: #ffffff;
+            transition: all 0.3s;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 5%;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #00b4d8;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 300;
+        }
+
+        .events-text {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 40px 0;
+            color: #00b4d8;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .events-button .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .events-button button {
+            background: #00b4d8;
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .events-button button:hover {
+            background: #0096c7;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .events-button button:disabled {
+            background: #808080;
+            cursor: not-allowed;
+        }
+
+        .events-button button img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .gallery-section {
+            padding: 40px 5%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #00b4d8;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid #00b4d8;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 5%;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: block;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 20px;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 40px 5%;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .events-button button {
+                font-size: 1rem;
+            }
+
+            .gallery-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Reduced from 200px to 150px */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="NavBar_logo">
+            <img alt="logo" src="images/logo2.png" />
+        </div>
+        <button class="hamburger-menu" aria-label="Toggle navigation">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">SHASTRA</h1>
+        <p class="hero-subtitle">Tech Fest 2025</p>
+    </section>
+
+    <h1 class="events-text">EVENTS</h1>
+
+    <div class="events-button" id="events-section">
+        <div class="container">
+            <button onclick="window.location.href='hackathon.html'">
+                <span>Hackathon</span>
+                <img src="IMAGES/hackathon-thumb.jpg" alt="Hackathon" />
+            </button>
+            <button onclick="window.location.href='presentation.html'">
+                <span>Presentation</span>
+                <img src="IMAGES/presentation-thumb.jpg" alt="Presentation" />
+            </button>
+            <button onclick="window.location.href='debate.html'">
+                <span>Debate</span>
+                <img src="IMAGES/debate-thumb.jpg" alt="Debate" />
+            </button>
+            <button onclick="window.location.href='games.html'">
+                <span>Games</span>
+                <img src="IMAGES/games-thumb.jpg" alt="Games" />
+            </button>
+        </div>
+    </div>
+
+    <section class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <img src="images/kits.png" alt="Event Image 1" />
+            <img src="images/iedc.jpg" alt="Event Image 2" />
+            <img src="images/ic.png" alt="Event Image 3" />
+            <img src="images/iedc2.png" alt="Event Image 4" />
+            <img src="images/iic.png" alt="Event Image 5" />
+            <img src="images/ktu.png" alt="Event Image 6" />
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>SHASTRA Tech Fest &copy; 2025</p>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        document.querySelector('.hamburger-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Theme color handling
+        function setThemeColor() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', isDarkMode ? '#2c2c2c' : '#00b4d8');
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
+        window.addEventListener('DOMContentLoaded', setThemeColor);
+    </script>
+</body>
+</html>

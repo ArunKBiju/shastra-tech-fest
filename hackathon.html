@@ -1,0 +1,88 @@
+<!-- Example for hackathon.html (similar for debate.html, and all leaf event pages like paper-presentation.html, pitchathon.html, bridge-making.html, etc.) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="events-page.css">
+    <title>Hackathon</title>
+    <style>
+        .event-image {
+            width: 1066px;
+            height: 1600px;
+            border-radius: 15px;
+            border: 3px solid gold;
+            animation: shine 2s infinite alternate;
+        }
+        @keyframes shine {
+            from { box-shadow: 0 0 10px gold; }
+            to { box-shadow: 0 0 20px gold; }
+        }
+        #register-button {
+            background-color: red;
+            transition: background-color 0.3s;
+        }
+        #register-button.enabled {
+            background-color: #008b8b; /* Emerald green */
+        }
+        #register-button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .event-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Content -->
+        <div class="left-section">
+            <h1>Hackathon</h1>
+            <img class="event-image" src="IMAGES/hackathon-image.jpg" alt="Hackathon Image"> <!-- 1066x1600 image -->
+            <h2>Timings and Coordinator Details</h2>
+            <p>Timing: [Insert Timing Here, e.g., September 25, 2025, 10 AM - 4 PM]</p>
+            <p>Coordinator: [Insert Name and Contact, e.g., John Doe - +1234567890]</p>
+            <h2>Rules and Regulations</h2>
+            <ul class="rules-list">
+                <li>[Rule 1]</li>
+                <li>[Rule 2]</li>
+                <!-- Add specific rules here -->
+            </ul>
+            <div class="agreement">
+                <label>
+                    <input type="checkbox" id="agree-checkbox">
+                    <span>I have read all the rules and regulations and will follow them.</span>
+                </label>
+            </div>
+            <button id="register-button" class="button" disabled>Register</button>
+        </div>
+    </div>
+    <script>
+        const checkbox = document.getElementById("agree-checkbox");
+        const registerButton = document.getElementById("register-button");
+
+        checkbox.addEventListener("change", function () {
+            if (this.checked) {
+                registerButton.classList.add("enabled");
+                registerButton.disabled = false;
+            } else {
+                registerButton.classList.remove("enabled");
+                registerButton.disabled = true;
+            }
+        });
+
+        registerButton.addEventListener("click", function () {
+            // Redirect to registration logic, e.g., payment page
+            window.location.href = 'registration.html?event=Hackathon';
+        });
+    </script>
+    <script src="event-page.js"></script>
+</body>
+</html>
