@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHASTRA Tech Fest</title>
+    <title>SHASTRA 2K25 Tech Fest</title>
     <meta name="theme-color" content="#00b4d8">
     <link rel="shortcut icon" href="images/logo.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,7 @@
             background: url('./images/bg-img.jpg') no-repeat center/cover fixed;
             color: #ffffff;
             overflow-x: hidden;
+            position: relative;
         }
 
         .navbar {
@@ -42,18 +43,14 @@
             gap: 10px;
         }
 
-        .navbar-left img {
-            height: 40px;
+        .navbar-left img.NavBar_logo {
+            height: 80px;
             border-radius: 5px;
             transition: transform 0.3s;
         }
 
-        .navbar-left img:hover {
+        .navbar-left img.NavBar_logo:hover {
             transform: scale(1.1);
-        }
-
-        .NavBar_logo img {
-            height: 60px;
         }
 
         .nav-links ul {
@@ -99,6 +96,12 @@
             justify-content: center;
             align-items: center;
             background: rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .hero-title-container {
+            position: relative;
+            display: inline-block;
         }
 
         .hero-title {
@@ -108,12 +111,46 @@
             text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .kits-iedc-presents {
+            position: absolute;
+            top: -40px;
+            left: -100px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .event-date {
+            position: absolute;
+            bottom: -30px;
+            right: -100px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            font-weight: 700;
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
             color: #ffffff;
             font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .hero-logo {
+            margin-top: 20px;
+        }
+
+        .hero-logo img {
+            height: 350px;
+            max-height: 20vw;
+            transition: transform 0.3s;
+        }
+
+        .hero-logo img:hover {
+            transform: scale(1.1);
         }
 
         .events-text {
@@ -173,6 +210,53 @@
             color: #ffffff;
         }
 
+        .footer-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-images img {
+            height: 40px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .footer-images img:hover {
+            transform: scale(1.1);
+        }
+
+        .scroll-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 5%;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 900;
+        }
+
+        .scroll-footer.visible {
+            transform: translateY(0);
+        }
+
+        .scroll-footer-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .scroll-footer-images img {
+            height: 40px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .scroll-footer-images img:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -208,6 +292,9 @@
 
             .hero-subtitle {
                 font-size: 1.2rem;
+                color: #ffffff;
+                font-weight: 300;
+                margin-bottom: 20px;
             }
 
             .events-button button {
@@ -221,12 +308,49 @@
                 padding: 0 5%;
             }
 
-            .navbar-left img {
+            .navbar-left img.NavBar_logo {
                 height: 30px;
             }
 
-            .NavBar_logo img {
-                height: 50px;
+            .hero-logo img {
+                height: 80px;
+                max-height: 30vw;
+            }
+
+            .kits-iedc-presents {
+                top: -30px;
+                left: -60px;
+                font-size: 1.2rem;
+            }
+
+            .event-date {
+                bottom: -20px;
+                right: -60px;
+                font-size: 1.2rem;
+            }
+
+            .footer-images {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, auto);
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .footer-images img {
+                height: 30px;
+            }
+
+            .scroll-footer-images {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, auto);
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .scroll-footer-images img {
+                height: 30px;
             }
         }
     </style>
@@ -234,13 +358,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-            <img alt="logo" src="images/logo2.png" class="NavBar_logo" />
-            <img src="images/kits.png" alt="Event Image 1" />
-            <img src="images/iedc.jpg" alt="Event Image 2" />
-            <img src="images/ic.png" alt="Event Image 3" />
-            <img src="images/iedc2.png" alt="Event Image 4" />
-            <img src="images/iic.png" alt="Event Image 5" />
-            <img src="images/ktu.png" alt="Event Image 6" />
+            <img src="images/logo2.png" alt="Logo" class="NavBar_logo" />
         </div>
         <button class="hamburger-menu" aria-label="Toggle navigation">
             <span class="line"></span>
@@ -257,8 +375,15 @@
     </nav>
 
     <section class="hero">
-        <h1 class="hero-title">SHASTRA</h1>
-        <p class="hero-subtitle">Tech Fest 2025</p>
+        <div class="hero-title-container">
+            <span class="kits-iedc-presents">KITS IEDC Presents</span>
+            <h1 class="hero-title">SHASTRA 2K25</h1>
+            <span class="event-date">on 14/10/2025</span>
+        </div>
+        <p class="hero-subtitle"></p>
+        <div class="hero-logo">
+            <img alt="logo" src="images/logo2.png" />
+        </div>
     </section>
 
     <h1 class="events-text">EVENTS</h1>
@@ -267,26 +392,40 @@
         <div class="container">
             <button onclick="window.location.href='hackathon.html'">
                 <span>Hackathon</span>
-                <img src="IMAGES/hackathon-thumb.jpg" alt="Hackathon" />
             </button>
             <button onclick="window.location.href='presentation.html'">
                 <span>Presentation</span>
-                <img src="IMAGES/presentation-thumb.jpg" alt="Presentation" />
             </button>
             <button onclick="window.location.href='debate.html'">
                 <span>Debate</span>
-                <img src="IMAGES/debate-thumb.jpg" alt="Debate" />
             </button>
             <button onclick="window.location.href='games.html'">
                 <span>Games</span>
-                <img src="IMAGES/games-thumb.jpg" alt="Games" />
             </button>
         </div>
     </div>
 
     <footer class="footer">
-        <p>SHASTRA Tech Fest &copy; 2025</p>
+        <div class="footer-images">
+            <img src="images/kits.png" alt="Event Image 1" />
+            <img src="images/iedc.jpg" alt="Event Image 2" />
+            <img src="images/ic.png" alt="Event Image 3" />
+            <img src="images/iedc2.png" alt="Event Image 4" />
+            <img src="images/iic.png" alt="Event Image 5" />
+            <img src="images/ktu.png" alt="Event Image 6" />
+        </div>
     </footer>
+
+    <div class="scroll-footer">
+        <div class="scroll-footer-images">
+            <img src="images/kits.png" alt="Event Image 1" />
+            <img src="images/iedc.jpg" alt="Event Image 2" />
+            <img src="images/ic.png" alt="Event Image 3" />
+            <img src="images/iedc2.png" alt="Event Image 4" />
+            <img src="images/iic.png" alt="Event Image 5" />
+            <img src="images/ktu.png" alt="Event Image 6" />
+        </div>
+    </div>
 
     <script>
         // Hamburger menu toggle
@@ -302,6 +441,19 @@
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
         window.addEventListener('DOMContentLoaded', setThemeColor);
+
+        // Scroll footer visibility
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const footer = document.querySelector('.scroll-footer');
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                footer.classList.add('visible');
+            } else {
+                footer.classList.remove('visible');
+            }
+            lastScroll = currentScroll;
+        });
     </script>
 </body>
 </html>
