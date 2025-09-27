@@ -7,17 +7,20 @@
   <link rel="stylesheet" href="events-page.css">
 </head>
 <body>
+  <!-- Header placeholder -->
+  <div id="header"></div>
+
   <div class="container">
     <!-- Right Image -->
     <div class="right-section">
-      <img src="images/hackathon.png" alt="Hackathon Event">
+      <img src="images2/hackathon.jpg" alt="Hackathon Event">
     </div>
 
     <!-- Left Content -->
     <div class="left-section">
       <h1>Hackathon</h1>
 
-      <h2>Hackathon Coordinators</h2>
+      <h2>Coordinators</h2>
       <ul class="coordinators">
         <li>
           <strong>Aleena T Lobo</strong><br>
@@ -53,10 +56,26 @@
         </label>
       </div>
 
-      <button id="register-button" class="button" disabled>REGISTER</button>
+      <button id="register-button" class="button" disabled
+              data-form-url="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__mO4a31UOU9CM1JaQkdLTjBERU5QMVpQQ0VDTFQ0WS4u">
+        REGISTER
+      </button>
     </div>
   </div>
 
   <script src="event-page.js"></script>
+
+  <script>
+    // Load header
+    fetch("header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+
+        document.querySelector('.hamburger-menu').addEventListener('click', () => {
+          document.querySelector('.nav-links').classList.toggle('active');
+        });
+      });
+  </script>
 </body>
 </html>
